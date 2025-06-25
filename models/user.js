@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     collection: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: cardCollection
+        ref: 'cardCollection'
     }
 });
 
