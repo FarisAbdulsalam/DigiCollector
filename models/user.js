@@ -8,9 +8,12 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    collection: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: cardCollection
     }
 });
 
 const User = mongoose.model('User', userSchema);
-
 module.exports = User;
