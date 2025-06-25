@@ -6,8 +6,7 @@
     <title>DigiCollector</title>
 </head>
 <body>
-    <a href="/auth/sign-up">Sign Up</a>
-    <a href="/auth/sign-in">Sign In</a>
+    <%- include('./partials/_navbar.ejs') %>
     <% if(user) { %>
         <p>you are logged in</p>
     <% } %>

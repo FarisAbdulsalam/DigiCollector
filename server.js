@@ -38,7 +38,9 @@ app.get('/', (req, res) => {
 });
 
 const authController = require('./controllers/auth.js');
+const collectionController = require('./controllers/cardCollections.js');
 app.use('/auth', authController);
+app.use('/cardCollections', collectionController);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

@@ -1,0 +1,12 @@
+<%- include('../partials/_navbar.ejs') %>
+<% if (collection && collection.cards && collection.cards.length === 0) { %>
+  <p>Collection is empty. Add cards to view them here!</p>
+<% } else if (collection && collection.cards) { %>
+  <ul>
+    <% collection.cards.forEach((card) => { %>
+      <li><%= card.name %> — ID: <%= card.cardId %></li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>Error: No collection found.</p>
+<% } %>

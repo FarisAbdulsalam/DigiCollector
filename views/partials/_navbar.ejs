@@ -2,8 +2,8 @@
     <% if (user) { %>
         <h1>Welcome to the App! <%= user.username %>
         </h1>
-        <a href="/mycollection">View your Collection</a>
-        <a href="/collections/">View all Collections</a>
+        <a href="/cardCollections/mycollection">View your Collection</a>
+        <a href="/cardCollections/allcollections">View all Collections</a>
         <a href="/auth/sign-out">Sign out</a>
     <% } else { %>
         <h1>Welcome to the app, guest.</h1>
