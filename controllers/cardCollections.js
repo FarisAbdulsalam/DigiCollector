@@ -36,6 +36,15 @@ router.post('/add-cards', async (req, res) => {
 
 router.get('/new-card', async (req, res) => {
     res.render('cardCollections/new-card.ejs');
-})
+});
+
+router.delete('/cards/:cardId', async (req, res) => {
+    const owner = req.session.user;
+    const cardId = req.params.cardId;
+    const collection = await cardCollection.findOne({ owner });
+    collection.cards = collection.cards.filter(card => card._id.toString() !== cardId);
+    await collection.save();
+    res.redirect('/cardCollections/my-collection');
+});
 
 module.exports = router;
