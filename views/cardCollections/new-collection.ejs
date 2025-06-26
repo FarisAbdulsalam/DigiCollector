@@ -1,0 +1,8 @@
+<%- include('../partials/_navbar') %>
+
+<h2>Create Your Digimon Card Collection</h2>
+
+<form action="/cardCollections" method="POST">
+  <input type="text" name="collectionName" required />
+  <button type="submit">Create Collection</button>
+</form>
