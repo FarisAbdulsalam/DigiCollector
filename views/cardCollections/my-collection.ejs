@@ -1,11 +1,14 @@
 <%- include('../partials/_navbar.ejs') %>
 <h1><%- collection.collectionName %></h1>
+<a href="./new-card">Add Card</a>
 <% if (collection && collection.cards && collection.cards.length === 0) { %>
   <p>Collection is empty. Add cards to view them here!</p>
 <% } else if (collection && collection.cards) { %>
   <ul>
     <% collection.cards.forEach((card) => { %>
-      <li><%= card.name %> — ID: <%= card.cardId %></li>
+      <li>
+        <img src="<%= card.image %>" alt="<%= card.name %>" width="150" /> <br> 
+        <%= card.name %> <br> ID: <%= card.cardId %> <br> Quantity: <%= card.quantity %> <br> Price: $<%= card.price %>  </li>
     <% }) %>
   </ul>
 <% } else { %>

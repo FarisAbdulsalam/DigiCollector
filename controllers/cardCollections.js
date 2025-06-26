@@ -21,4 +21,21 @@ router.post('/', async (req, res) => {
     res.redirect('/cardCollections/my-collection');
 });
 
+router.post('/add-cards', async (req, res) => {
+    const owner = req.session.user;
+    const collection = await cardCollection.findOne({owner});
+    const name = req.body.name;
+    const cardId = req.body.cardId;
+    const image = req.body.image;
+    const quantity = req.body.quantity;
+    const price = req.body.price;
+    collection.cards.push({name, cardId, image, quantity, price});
+    await collection.save();
+    res.redirect('/cardCollections/my-collection');
+});
+
+router.get('/new-card', async (req, res) => {
+    res.render('cardCollections/new-card.ejs');
+})
+
 module.exports = router;

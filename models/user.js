@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    collection: {
+    cardCollection: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'cardCollection'
     }
