@@ -10,7 +10,8 @@
         <img src="<%= card.image %>" alt="<%= card.name %>" width="150" /> <br> 
         <%= card.name %> <br> ID: <%= card.cardId %> <br> Quantity: <%= card.quantity %> <br> Price: $<%= card.price %>  </li>
         <form action="/cardCollections/cards/<%= card._id %>?_method=DELETE" method="POST" />
-      <button type="submit">Delete</button>
+        <button type="submit">Delete</button>
+        <a href="/cardCollections/cards/<%= card._id %>/edit">Edit</a>
     <% }) %>
   </ul>
 <% } else { %>

@@ -1,0 +1,14 @@
+<%- include('../partials/_navbar.ejs') %>
+<form action="/cardCollections/cards/<%= card._id %>?_method=PUT" method="POST">
+  Name: <input name="name" value="<%= card.name %>"/>
+  <br>
+  Card ID: <input name="cardId" value="<%= card.cardId %>" />
+  <br>
+  Image URL: <input name="image" value="<%= card.image %>" />
+  <br>
+  Quantity: <input name="quantity" type="number" min="1" value="<%= card.quantity %>" />
+  <br>
+  Price: <input name="price" type="number" min="0" value="<%= card.price %>"/>
+  <br>
+  <button type="submit">Save Changes</button>
+</form>

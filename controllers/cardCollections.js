@@ -47,4 +47,31 @@ router.delete('/cards/:cardId', async (req, res) => {
     res.redirect('/cardCollections/my-collection');
 });
 
+router.get('/cards/:cardId/edit', async (req, res) => {
+    const owner = req.session.user;
+    const cardId = req.params.cardId;
+    const collection = await cardCollection.findOne({ owner });
+    const card = collection.cards.id(cardId);
+    res.render('cardCollections/edit-card.ejs', { card });
+});
+
+router.put('/cards/:cardId', async (req, res) => {
+    const owner = req.session.user;
+    const cardId = req.params.cardId;
+    const name = req.body.name;
+    const cardCode = req.body.cardId;
+    const image = req.body.image;
+    const quantity = req.body.quantity;
+    const price = req.body.price;
+    const collection = await cardCollection.findOne({ owner });
+    const card = collection.cards.id(cardId);
+    card.name = name;
+    card.cardId = cardCode;
+    card.image = image;
+    card.quantity = quantity;
+    card.price = price;
+    await collection.save();
+    res.redirect('/cardCollections/my-collection');
+});
+
 module.exports = router;
