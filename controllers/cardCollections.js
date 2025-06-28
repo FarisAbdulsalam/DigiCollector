@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const cardCollection = require('../models/cardCollection.js');
+const { findOne } = require('../models/user.js');
 
 router.get('/my-collection', async (req, res) => {
     const owner = req.session.user;
@@ -72,6 +73,11 @@ router.put('/cards/:cardId', async (req, res) => {
     card.price = price;
     await collection.save();
     res.redirect('/cardCollections/my-collection');
+});
+
+router.get('/all-collections', async (req, res) => {
+    const collections = await cardCollection.find({}).populate('owner');
+    res.render('cardCollections/all-collections.ejs', { collections });
 });
 
 module.exports = router;

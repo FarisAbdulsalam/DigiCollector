@@ -1,0 +1,8 @@
+<%- include('../partials/_navbar.ejs') %>
+<% collections.forEach(collection => { %>
+    <ul>
+        <li>
+            <a href="/cardCollections/<%=collection._id%>"><%= collection.collectionName %> by <%= collection.owner.username %></a>
+        </li>
+    </ul>
+<% }) %>
