@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const cardCollection = require('../models/cardCollection.js');
-const { findOne } = require('../models/user.js');
 
 router.get('/my-collection', async (req, res) => {
     const owner = req.session.user;

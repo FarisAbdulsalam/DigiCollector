@@ -6,9 +6,11 @@
     <title>DigiCollector</title>
 </head>
 <body>
-    <%- include('./partials/_navbar.ejs') %>
     <% if(user) { %>
-        <p>you are logged in</p>
+        <h1>Welcome to DigiCollector, <%= user.username %>!</h1>
+    <% } else { %>
+        <h1>Welcome to DigiCollector, guest.</h1>
     <% } %>
-</body>
+    <%- include('./partials/_navbar.ejs') %>
+        </body>
 </html>

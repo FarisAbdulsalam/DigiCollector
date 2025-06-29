@@ -1,13 +1,11 @@
 <nav>
     <% if (user) { %>
-        <h1>Welcome to the App! <%= user.username %>
-        </h1>
         <a href="/cardCollections/my-collection">View your Collection</a>
         <a href="/cardCollections/all-collections">View all Collections</a>
         <a href="/auth/sign-out">Sign out</a>
     <% } else { %>
-        <h1>Welcome to the app, guest.</h1>
         <a href="/auth/sign-up">Sign up</a>
         <a href="/auth/sign-in">Sign in</a>
+        <a href="/cardCollections/all-collections">View all Collections</a>
     <% } %>
 </nav>
