@@ -80,4 +80,9 @@ router.get('/all-collections', async (req, res) => {
     res.render('cardCollections/all-collections.ejs', { collections });
 });
 
+router.get('/:collectionId', async (req, res) => {
+    const collection = await cardCollection.findById(req.params.collectionId).populate('owner');
+    res.render('cardCollections/view-collection.ejs', { collection })
+});
+
 module.exports = router;

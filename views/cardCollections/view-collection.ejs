@@ -1,0 +1,9 @@
+<h1><%= collection.collectionName %> by <%= collection.owner.username %></h1>
+<% collection.cards.forEach(card => { %>
+    <ul>
+        <li>
+            <img src="<%= card.image %>" alt="<%= card.name %>" width="150" /> <br> 
+            <%= card.name %> <br> ID: <%= card.cardId %> <br> Quantity: <%= card.quantity %> <br> Price: $<%= card.price %>
+        </li>
+    </ul>
+<% }) %>
