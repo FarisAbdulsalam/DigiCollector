@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const cardSchema = require('./card.js');
+const commentSchema = require('./comment.js')
 
 const cardCollectionSchema = new mongoose.Schema({
     owner: {
@@ -12,7 +13,8 @@ const cardCollectionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    cards: [cardSchema]
+    cards: [cardSchema],
+    comments: [commentSchema]
 });
 
 const cardCollection = mongoose.model('cardCollection', cardCollectionSchema);
