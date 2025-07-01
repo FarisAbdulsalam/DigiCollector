@@ -80,8 +80,19 @@ router.get('/all-collections', async (req, res) => {
 });
 
 router.get('/:collectionId', async (req, res) => {
-    const collection = await cardCollection.findById(req.params.collectionId).populate('owner');
-    res.render('cardCollections/view-collection.ejs', { collection })
+    const user = req.session.user;
+    const collection = await cardCollection.findById(req.params.collectionId).populate('owner').populate('comments.author');
+    res.render('cardCollections/view-collection.ejs', { collection, user })
+});
+
+router.post('/:collectionId/comments', async (req, res) => {
+    const collection = await cardCollection.findById(req.params.collectionId);
+    collection.comments.push({
+        text: req.body.comment,
+        author: req.session.user
+    });
+    await collection.save();
+    res.redirect(`/cardCollections/${req.params.collectionId}`);
 });
 
 module.exports = router;

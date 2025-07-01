@@ -7,3 +7,23 @@
         </li>
     </ul>
 <% }) %>
+<form action="/cardCollections/<%= collection._id %>/comments" method="POST">
+    <% if(user) { %>
+        <textarea name="comment" placeholder="Leave a comment"></textarea>
+        <br>
+        <button type="submit">Post Comment</button>
+    <% } else { %>
+        <p>
+            <a href="/auth/sign-in">Sign In </a>to leave a comment
+        </p>
+    <% } %>
+</form>
+<h3>Comments</h3>
+<ul>
+  <% collection.comments.forEach(comment => { %>
+    <li>
+      <strong><%= comment.author.username %></strong>:
+      <%= comment.text %>
+    </li>
+  <% }) %>
+</ul>
