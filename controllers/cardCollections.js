@@ -95,4 +95,10 @@ router.post('/:collectionId/comments', async (req, res) => {
     res.redirect(`/cardCollections/${req.params.collectionId}`);
 });
 
+router.delete('/delete-collection', async (req, res) => {
+    const owner = req.session.user;
+    await cardCollection.findOneAndDelete({ owner });
+    res.redirect('/cardCollections/my-collection');
+});
+
 module.exports = router;

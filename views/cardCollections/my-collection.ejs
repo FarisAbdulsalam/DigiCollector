@@ -1,6 +1,9 @@
 <%- include('../partials/_navbar.ejs') %>
 <h1><%- collection.collectionName %></h1>
 <a href="./new-card">Add Card</a>
+<form action="/cardCollections/delete-collection?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you wish to delete this collection? This action cannot be undone.')">
+  <button type="submit">Delete Collection</button>
+</form>
 <% if (collection && collection.cards && collection.cards.length === 0) { %>
   <p>Collection is empty. Add cards to view them here!</p>
 <% } else if (collection && collection.cards) { %>
@@ -9,8 +12,9 @@
       <li>
         <img src="<%= card.image %>" alt="<%= card.name %>" width="150" /> <br> 
         <%= card.name %> <br> ID: <%= card.cardId %> <br> Quantity: <%= card.quantity %> <br> Price: $<%= card.price %>  </li>
-        <form action="/cardCollections/cards/<%= card._id %>?_method=DELETE" method="POST" />
-        <button type="submit">Delete</button>
+        <form action="/cardCollections/cards/<%= card._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you wish to delete this card? This action cannot be undone.')">
+          <button type="submit">Delete</button>
+        </form>
         <a href="/cardCollections/cards/<%= card._id %>/edit">Edit</a>
     <% }) %>
   </ul>
