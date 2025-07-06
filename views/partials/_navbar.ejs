@@ -1,11 +1,16 @@
-<nav>
-    <% if (user) { %>
-        <a href="/cardCollections/my-collection">View your Collection</a>
-        <a href="/cardCollections/all-collections">View all Collections</a>
-        <a href="/auth/sign-out">Sign out</a>
-    <% } else { %>
-        <a href="/auth/sign-up">Sign up</a>
-        <a href="/auth/sign-in">Sign in</a>
-        <a href="/cardCollections/all-collections">View all Collections</a>
-    <% } %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/">DigiCollector</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/cardCollections/my-collection">My Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="/cardCollections/all-collections">All Collections</a></li>
+        <% if (user) { %>
+          <li class="nav-item"><a class="nav-link" href="/auth/sign-out">Sign Out</a></li>
+        <% } else { %>
+          <li class="nav-item"><a class="nav-link" href="/auth/sign-in">Sign In</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
 </nav>

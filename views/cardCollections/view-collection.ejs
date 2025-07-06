@@ -1,29 +1,41 @@
-<%- include('../partials/_navbar') %>
-<h1><%= collection.collectionName %> by <%= collection.owner.username %></h1>
-<% collection.cards.forEach(card => { %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Collection</title>
+    <%- include('../partials/_head') %>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1><%= collection.collectionName %> by <%= collection.owner.username %></h1>
+    <% collection.cards.forEach(card => { %>
+        <ul>
+            <li>
+                <img src="<%= card.image %>" alt="<%= card.name %>" width="150" /> <br> 
+                <%= card.name %> <br> ID: <%= card.cardId %> <br> Quantity: <%= card.quantity %> <br> Price: $<%= card.price %>
+            </li>
+        </ul>
+    <% }) %>
+    <h3>Comments</h3>
+    <form action="/cardCollections/<%= collection._id %>/comments" method="POST">
+        <% if(user) { %>
+            <textarea name="comment" placeholder="Leave a comment"></textarea>
+            <br>
+            <button type="submit">Post Comment</button>
+        <% } else { %>
+            <p>
+                <a href="/auth/sign-in">Sign in</a> to leave a comment
+            </p>
+        <% } %>
+    </form>
     <ul>
+      <% collection.comments.forEach(comment => { %>
         <li>
-            <img src="<%= card.image %>" alt="<%= card.name %>" width="150" /> <br> 
-            <%= card.name %> <br> ID: <%= card.cardId %> <br> Quantity: <%= card.quantity %> <br> Price: $<%= card.price %>
+          <%= comment.timestamp%> <br> <%= comment.author.username %>: <%= comment.text %>
         </li>
+      <% }) %>
     </ul>
-<% }) %>
-<h3>Comments</h3>
-<form action="/cardCollections/<%= collection._id %>/comments" method="POST">
-    <% if(user) { %>
-        <textarea name="comment" placeholder="Leave a comment"></textarea>
-        <br>
-        <button type="submit">Post Comment</button>
-    <% } else { %>
-        <p>
-            <a href="/auth/sign-in">Sign in</a> to leave a comment
-        </p>
-    <% } %>
-</form>
-<ul>
-  <% collection.comments.forEach(comment => { %>
-    <li>
-      <%= comment.timestamp%> <br> <%= comment.author.username %>: <%= comment.text %>
-    </li>
-  <% }) %>
-</ul>
+    <%- include('../partials/_footer') %>
+</body>
+</html>

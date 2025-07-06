@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigiCollector</title>
+    <%- include('./partials/_head') %>
 </head>
 <body>
+    <%- include('./partials/_navbar.ejs') %>
     <% if(user) { %>
         <h1>Welcome to DigiCollector, <%= user.username %>!</h1>
-    <% } else { %>
-        <h1>Welcome to DigiCollector, guest.</h1>
-    <% } %>
-    <%- include('./partials/_navbar.ejs') %>
-        </body>
+        <% } else { %>
+            <h1>Welcome to DigiCollector, guest.</h1>
+            <% } %>
+    <%- include('./partials/_footer') %>
+</body>
 </html>

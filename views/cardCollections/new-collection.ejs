@@ -1,9 +1,20 @@
-<%- include('../partials/_navbar') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Collection</title>
+    <%- include('../partials/_head') %>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+    <h2>Create Your Digimon Card Collection</h2>
+    <form action="/cardCollections" method="POST">
+        Collection Name:
+        <input type="text" name="collectionName" required />
+        <button type="submit">Create Collection</button>
+    </form>
+    <%- include('../partials/_footer') %>
+</body>
+</html>
 
-<h2>Create Your Digimon Card Collection</h2>
-
-<form action="/cardCollections" method="POST">
-    Collection Name:
-    <input type="text" name="collectionName" required />
-    <button type="submit">Create Collection</button>
-</form>

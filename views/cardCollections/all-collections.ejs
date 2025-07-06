@@ -1,8 +1,20 @@
-<%- include('../partials/_navbar.ejs') %>
-<% collections.forEach(collection => { %>
-    <ul>
-        <li>
-            <a href="/cardCollections/<%=collection._id%>"><%= collection.collectionName %> by <%= collection.owner.username %></a>
-        </li>
-    </ul>
-<% }) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Collections</title>
+    <%- include('../partials/_head') %>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <% collections.forEach(collection => { %>
+        <ul>
+            <li>
+                <a href="/cardCollections/<%=collection._id%>"><%= collection.collectionName %> by <%= collection.owner.username %></a>
+            </li>
+        </ul>
+    <% }) %>
+    <%- include('../partials/_footer') %>
+</body>
+</html>

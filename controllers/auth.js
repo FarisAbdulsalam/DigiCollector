@@ -41,7 +41,7 @@ router.post('/sign-in', async (req, res) => {
     const password = req.body.password;
     const userExists = await User.findOne({ username: req.body.username });
     if(!userExists){
-        res.send('Something went wrong. Try logging in again.');
+        return res.send('Something went wrong. Try logging in again.');
     }
     const isValidPassword = await bcrypt.compare(password, userExists.password);
     if(!isValidPassword){
