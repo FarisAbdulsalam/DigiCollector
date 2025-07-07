@@ -1,6 +1,8 @@
+![Screenshot of the app](https://i.imgur.com/TLZZeQk.jpeg)
+
 # DigiCollector
 
-DigiCollector is a web application that lets users build and manage a personal collection of Digimon cards. Users can add, edit, and delete cards from their private collection, browse collections from others, and leave comments.
+DigiCollector is a web application that lets users build and manage a personal collection of Digimon cards. Users can add, edit, and delete cards from their personal collection, browse collections from others, and leave comments.
 
 [Wireframe](https://www.figma.com/design/r6WltOVlQfuCpJRHNMD9oP/Untitled?node-id=8-91&t=DgiWwtH0vwB1PvTc-1) [ERD](https://i.imgur.com/paxdPpd.png)
 
