@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Collection</title>
-    <%- include('../partials/_head') %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Collection</title>
+  <%- include('../partials/_head') %>
 </head>
 <body>
-    <%- include('../partials/_navbar') %>
-    <h1><%= collection.collectionName %> by <%= collection.owner.username %></h1>
-    <% collection.cards.forEach(card => { %>
-        <ul>
-            <li>
-                <img src="<%= card.image %>" alt="<%= card.name %>" width="150" /> <br> 
-                <%= card.name %> <br> ID: <%= card.cardId %> <br> Quantity: <%= card.quantity %> <br> Price: $<%= card.price %>
-            </li>
-        </ul>
-    <% }) %>
-    <h3>Comments</h3>
-    <form action="/cardCollections/<%= collection._id %>/comments" method="POST">
-        <% if(user) { %>
-            <textarea name="comment" placeholder="Leave a comment"></textarea>
-            <br>
-            <button type="submit">Post Comment</button>
+  <%- include('../partials/_navbar') %>
+    <div class="container">
+      <h1> <%= collection.collectionName %> by <%= collection.owner.username %> </h1>
+      <div class="row">
+        <% collection.cards.forEach(card => { %>
+          <div class="col-sm-6 col-md-3 mb-4">
+            <div class="card h-100">
+              <img src="<%= card.image %>" class="card-img-top" alt="<%= card.name %>">
+              <div class="card-body">
+                <h5 class="card-title"> <%= card.name %> </h5>
+                <p>ID: <%= card.cardId %><br>Quantity: <%= card.quantity %><br>Price: $<%= card.price %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+      <hr>
+      <h3>Comments</h3>
+      <% if (user) { %>
+        <form action="/cardCollections/<%= collection._id %>/comments" method="POST" class="mb-4">
+          <textarea name="comment" class="form-control mb-2" placeholder="Leave a comment" required></textarea>
+          <button class="btn btn-primary">Post Comment</button>
+        </form>
         <% } else { %>
-            <p>
-                <a href="/auth/sign-in">Sign in</a> to leave a comment
-            </p>
-        <% } %>
-    </form>
-    <ul>
-      <% collection.comments.forEach(comment => { %>
-        <li>
-          <%= comment.timestamp%> <br> <%= comment.author.username %>: <%= comment.text %>
-        </li>
-      <% }) %>
-    </ul>
+          <p><a href="/auth/sign-in" class="btn btn-outline-primary">Sign in to comment</a></p>
+          <% } %>
+            <ul class="list-group">
+              <% collection.comments.forEach(comment => { %>
+                <li class="list-group-item">
+                  <strong> <%= comment.author.username %> </strong>
+                  <small class="float-end"> <%= new Date(comment.timestamp).toLocaleString('en-GB', { year: 'numeric' , month: '2-digit' , day: '2-digit' , hour: '2-digit' , minute: '2-digit' , hour12: false }) %></small>
+                  <p> <%= comment.text %> </p>
+                </li>
+              <% }) %>
+            </ul>
+    </div>
     <%- include('../partials/_footer') %>
 </body>
 </html>

@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit a Card</title>
-    <%- include('../partials/_head') %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit a Card</title>
+  <%- include('../partials/_head') %>
 </head>
+
 <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <form action="/cardCollections/cards/<%= card._id %>?_method=PUT" method="POST">
-        Name: <input name="name" value="<%= card.name %>"/>
-        <br>
-        Card ID: <input name="cardId" value="<%= card.cardId %>" />
-        <br>
-        Image URL: <input name="image" value="<%= card.image %>" />
-        <br>
-        Quantity: <input name="quantity" type="number" min="1" value="<%= card.quantity %>" />
-        <br>
-        Price: <input name="price" type="number" min="0" value="<%= card.price %>"/>
-        <br>
-        <button type="submit">Save Changes</button>
-    </form>
+  <%- include('../partials/_navbar') %>
+    <div class="container mt-4" style="max-width: 600px;">
+      <h2 class="mb-4">Edit Card</h2>
+      <form action="/cardCollections/cards/<%= card._id %>?_method=PUT" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Name:</label>
+          <input class="form-control" name="name" value="<%= card.name %>" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Card ID:</label>
+          <input class="form-control" name="cardId" value="<%= card.cardId %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Image URL:</label>
+          <input class="form-control" name="image" value="<%= card.image %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Quantity:</label>
+          <input type="number" class="form-control" name="quantity" value="<%= card.quantity %>" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Price:</label>
+          <input type="number" class="form-control" name="price" step="0.01" value="<%= card.price %>" />
+        </div>
+        <button class="btn btn-success">Save Changes</button>
+      </form>
+    </div>
     <%- include('../partials/_footer') %>
 </body>
+
 </html>

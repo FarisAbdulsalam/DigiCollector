@@ -7,14 +7,25 @@
     <%- include('../partials/_head') %>
 </head>
 <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <% collections.forEach(collection => { %>
-        <ul>
-            <li>
-                <a href="/cardCollections/<%=collection._id%>"><%= collection.collectionName %> by <%= collection.owner.username %></a>
-            </li>
-        </ul>
-    <% }) %>
-    <%- include('../partials/_footer') %>
+    <%- include('../partials/_navbar') %>
+
+        <div class="container">
+            <h1 class="mb-4">All Collections</h1>
+            <div class="row">
+                <% collections.forEach(collection => { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"> <%= collection.collectionName %> </h5>
+                                <p class="text-muted"> <%= collection.owner.username %> </p>
+                                <a href="/cardCollections/<%= collection._id %>" class="btn btn-outline-primary">View Collection</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+        <%- include('../partials/_footer') %>
 </body>
+
 </html>

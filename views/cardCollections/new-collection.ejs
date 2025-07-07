@@ -7,14 +7,17 @@
     <%- include('../partials/_head') %>
 </head>
 <body>
-    <%- include('../partials/_navbar') %>
-    <h2>Create Your Digimon Card Collection</h2>
-    <form action="/cardCollections" method="POST">
-        Collection Name:
-        <input type="text" name="collectionName" required />
-        <button type="submit">Create Collection</button>
-    </form>
+<%- include('../partials/_navbar') %>
+
+    <div class="container mt-5" style="max-width: 500px;">
+        <h2 class="text-center mb-4">Create Your Digimon card Collection</h2>
+        <form action="/cardCollections" method="POST">
+            <div class="mb-3">
+                <input type="text" name="collectionName" class="form-control" placeholder="Collection Name" required/>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Create Collection</button>
+        </form>
+    </div>
     <%- include('../partials/_footer') %>
 </body>
 </html>
-

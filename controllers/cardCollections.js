@@ -2,8 +2,11 @@ const router = require('express').Router();
 const cardCollection = require('../models/cardCollection.js');
 
 router.get('/my-collection', async (req, res) => {
+    if(!req.session.user){
+        return res.redirect('/auth/sign-in');
+    }
     const owner = req.session.user;
-    const collection = await cardCollection.findOne({owner});
+    const collection = await cardCollection.findOne({owner}).populate('comments.author');
     if(!collection){
         return res.render('cardCollections/new-collection.ejs')
     }
