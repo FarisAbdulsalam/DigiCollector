@@ -12,7 +12,7 @@
       <h1> <%= collection.collectionName %> by <%= collection.owner.username %> </h1>
       <div class="row">
         <% collection.cards.forEach(card => { %>
-          <div class="col-sm-6 col-md-3 mb-4">
+          <div class="mb-4">
             <div class="card h-100">
               <img src="<%= card.image %>" class="card-img-top" alt="<%= card.name %>">
               <div class="card-body">
